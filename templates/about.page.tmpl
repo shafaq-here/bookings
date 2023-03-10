@@ -1,0 +1,19 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+        <h1> Welcome to the about page</h1>
+        <p>About page modified dynamically</p>
+        <p>About page modified dynamically</p>
+        <p>Data passed by the handler: {{index .StringMap "test"}} and that's it</p>
+
+        <p>
+           {{if ne (index .StringMap "remote_ip") ""}}
+           Yoor remote IP Address is {{index .StringMap "remote_ip"}}
+           {{else}}
+           I dont have your IP address yet. Please visit <a href="/">Home Page</a> so that I can set your IP.
+           {{end}}
+        </p>
+        
+    </div>
+{{end}}
