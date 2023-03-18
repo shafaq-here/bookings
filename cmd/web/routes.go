@@ -26,6 +26,7 @@ func routes(a *config.AppConfig) http.Handler {
 	mux.Get("/majors-suite", handlers.Repo.Majors)
 	mux.Get("/make-reservation", handlers.Repo.Reservation)
 	mux.Get("/search-availability", handlers.Repo.Availability)
+	mux.Post("/search-availability", handlers.Repo.PostAvailability)
 	mux.Get("/contact", handlers.Repo.Contact)
 
 	fileServer := http.FileServer(http.Dir("./static"))
