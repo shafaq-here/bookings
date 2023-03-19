@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 
 	"github.com/justinas/nosurf"
-	"github.com/shafaq-here/bookings/pkg/config"
-	"github.com/shafaq-here/bookings/pkg/models"
+	"github.com/shafaq-here/bookings/internal/config"
+	"github.com/shafaq-here/bookings/internal/models"
 )
 
 var app *config.AppConfig

@@ -1,12 +1,14 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
-	"github.com/shafaq-here/bookings/pkg/config"
-	"github.com/shafaq-here/bookings/pkg/models"
-	render "github.com/shafaq-here/bookings/pkg/render"
+	"github.com/shafaq-here/bookings/internal/config"
+	"github.com/shafaq-here/bookings/internal/models"
+	render "github.com/shafaq-here/bookings/internal/render"
 )
 
 // Type repository to interact with the data
@@ -70,6 +72,26 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	start := r.Form.Get("start")
 	end := r.Form.Get("end")
 	w.Write([]byte(fmt.Sprintf("Start Date entered is %s and End date entered is %s", start, end)))
+}
+
+type jsonResponse struct {
+	Ok      bool   `json:"ok"`
+	Message string `json:"message"`
+}
+
+func (m *Repository) AvailabilityJson(w http.ResponseWriter, r *http.Request) {
+	resp := jsonResponse{
+		Ok:      true,
+		Message: "Available",
+	}
+
+	out, err := json.MarshalIndent(resp, "", "     ")
+	if err != nil {
+		log.Println(err)
+	}
+	log.Println(string(out))
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(out)
 }
 
 func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
