@@ -6,3 +6,4 @@ Technologies used:
 - Uses [chi](github.com/go-chi/chi/v5) 
 - Uses [Alex Edwards scs](github.com/alexedwards/scs/v2), a session package
 - Uses [Justinas NoSurf](github.com/justinas/nosurf) for CSRF 
+Tabish Ansari says this project is amazing
